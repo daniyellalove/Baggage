@@ -1,0 +1,3 @@
+class Baggage::CLI
+
+end

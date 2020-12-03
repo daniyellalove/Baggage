@@ -1,0 +1,3 @@
+class Baggage::API
+
+end

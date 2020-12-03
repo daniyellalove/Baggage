@@ -1,0 +1,3 @@
+class Baggage::BaggageLevels
+
+end
