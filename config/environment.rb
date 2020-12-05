@@ -1,5 +1,6 @@
 require "net/http"
-require "open-uri"
+require "open-uri" 
+require "json" 
 require "pry"
 
 require_relative "../lib/modules/baggage"
