@@ -6,7 +6,7 @@ class Baggage::API
         @url = "https://evilinsult.com/api/#insults"
     end
 
-    def get_insults
+    def get_insults_urls
         uri = URI.parse(@url)
         response = Net::HTTP.get(uri)
         data = JSON.parse(response)
@@ -19,8 +19,8 @@ class Baggage::API
         uri = URI.parse(url)
         response = Net::HTTP.get(uri)
         data = JSON.parse(response)
-        Baggage.new(data)
+        BaggageLevels::Baggage.new(data)
     end
 end
 
-Baggage::API.new.get_insults_data
+Baggage::API.new.get_insults_urls
