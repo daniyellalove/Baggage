@@ -1,6 +1,6 @@
 # taking care of displaying info - all puts/print statements
 # takes care of user input - gets
-class Baggage::CLI
+#class Baggage::CLI
 
     def run
         greeting
@@ -8,12 +8,9 @@ class Baggage::CLI
         goodbye
     end
 
-    def run 
-        puts "hi"
-
     def greeting
-        puts "Welcome to Baggage. CHoose your Baggage."
-        Baggage::API.new.get_insults_urls
+        puts "Welcome to Baggage. Choose DC or Marvel"
+        Baggage::API.new.get_character_urls
     end
 
     def menu
@@ -23,13 +20,13 @@ class Baggage::CLI
     end
 
     def list_dates
-        Baggage::BaggageLevels.each.with_index(1) do |bag, i|
-            puts "#{i + 1}. #{bag.name}"
+        Baggage::Comics.each.with_index(1) do |comic, i|
+            puts "#{i + 1}. #{comic.name}"
         list_baggage
     end
 
     def list_baggage
-
+        
     end
 
     def goodbye
