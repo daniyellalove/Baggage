@@ -2,12 +2,17 @@
 # takes care of user input - gets
 class CLI #Baggage::
     
+    def initialize
+        
+    end
+
     def call 
         puts ""
     end
     def run
         greeting
         menu
+        choose_your_baggage
         goodbye
     end
 
@@ -28,13 +33,26 @@ class CLI #Baggage::
         while input != "exit"
             input = gets.strip.downcase
             case input
-            when "1"
-                puts "Choose Marvel Comic Charater: "
-            when "2"
-                puts "Choose DC Comic Character: "
+            when 1 || 2
+                puts "Choose your baggage: "
             end
+        choose_baggage
         end
     end
+
+    def choose_baggage
+        when 1
+            puts ""
+        when 2
+            puts ""
+        when 3
+            puts ""
+        when 4 
+            puts ""
+        end
+    end
+        
+
 
     def list_dates
         dc_dates = ["Harley Quinn", "Poison Ivy", "Flash", "Joker"]
@@ -73,7 +91,7 @@ class CLI #Baggage::
         }
         baggage_2 = {
             "Dark Phoenix" => "I'm a sociopath and I faked my own death"
-            "Storm" => "If anyone crosses me, they will be blown away"
+            "Storm" => "If anyone crosses me, I'll blow them away"
             "Thor" => "I killed my own brother"
             "Thanos" => "When I'm bored, I kill people"
         }
