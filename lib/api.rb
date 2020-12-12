@@ -1,25 +1,30 @@
+require "pry"
 require_relative "../config/environment"
 require 'net/http'
 require 'json'
 
-class API #Baggage::API
+class Api #Baggage::API
 
     def initialize
-        @key = ENV['COMICVINE_KEY']
+        #urls = {marvel: "https://comicvine.gamespot.com/marvel/4010-31/", dc: "https://comicvine.gamespot.com/dc-comics/4010-10/"}
+        @url = "https://comicvine.gamespot.com/publishers/"
     end
 
-    def get_character_urls
-        uri = URI.parse(key)
+    def get_publisher_urls
+        uri = URI.parse(@url)
         response = Net::HTTP.get(uri)
         data = JSON.parse(response)
+        data["results"].each do |publisher|
+            get_publisher_data(publisher["url"])
+        end
     end
 
-    def get_character_data(@key)
-        uri = URI.parse(key)
+    def get_publisher_data(url)
+        uri = URI.parse(url)
         response = Net::HTTP.get(uri)
         data = JSON.parse(response)
-        #Comics::Baggage.new(data)
+        binding.pry
     end
 end
 
-API.new.get_character_urls #Baggage::
+Api.new.get_publisher_urls #Baggage::

@@ -3,6 +3,7 @@
 #1st level choose marvel or dc, 2nd level choose comic from marvel and dc
 class CLI #Baggage:: ::API
     
+    
     def call 
         #CLI::API.new#.api method for getting api
         puts "Baggage: Heroes and Villians"
@@ -18,6 +19,7 @@ class CLI #Baggage:: ::API
 
     def greeting #30.27
         puts "Welcome to Baggage. Choose Marvel or DC:"
+        
         puts "1. Marvel"
              "2. DC"
         #insert website link?
@@ -33,7 +35,6 @@ class CLI #Baggage:: ::API
         while input != "exit"
             puts "Enter 1 for Marvel and 2 for DC"
             input = gets.strip.downcase
-            if input.to_i
             case input
             when "1" || "2"
                 puts "Choose your baggage: "
@@ -50,15 +51,19 @@ class CLI #Baggage:: ::API
         when input == 1
         #1 = "Iron man"
             puts "I'm a genius but I have trouble commiting to 1 person"
+            "Welcome Iron Man"
         when input == 2
         #2 = "Scarlet Witch"
-            puts "I nearly wiped out all mutant life on earth "
+            puts "I nearly wiped out all mutant life on earth"
+            "Welcome Scarlet Witch"
         when input == 3
         #3 = "Batman"
             puts "I don't have any powers and I hide my true identity"
+            "Welcome Batman"
         when input == 4
         #4 = "Catwoman"
             puts "I'm obsessed with cats and I have low self-control"
+            "Welcome Catwoman"
         else
             puts "Go back to main menu"
             greeting
