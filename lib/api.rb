@@ -23,8 +23,9 @@ class Api #Baggage::API
         uri = URI.parse(url)
         response = Net::HTTP.get(uri)
         data = JSON.parse(response)
-        binding.pry
+        Baggage.new(data)
     end
 end
 
 Api.new.get_publisher_urls #Baggage::
+binding.pry

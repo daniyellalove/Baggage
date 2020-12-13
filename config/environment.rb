@@ -7,4 +7,5 @@ Dotenv.load('key.env')
 
 #require_relative "../lib/modules/baggage"
 require_relative "../lib/cli"
+require_relative "../lib/comics"
 require_relative "../lib/api"
