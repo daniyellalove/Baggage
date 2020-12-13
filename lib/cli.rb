@@ -2,54 +2,94 @@
 # takes care of user input - gets
 #1st level choose marvel or dc, 2nd level choose comic from marvel and dc
 class Baggage::CLI
-    
     def run
         greeting
-        menu
         choose_baggage
+        menu
+        change_character?
         goodbye
     end
 
     def greeting
-        puts "Welcome to Baggage. Choose Marvel or DC:"
-        puts ("1. Marvel", "2. DC").sleep[1]
-        #Baggage::API.new.get_publisher_urls.include?("Marvel", "DC Comics")
-        Baggage::Publisher.each.with_index(1).include?("Marvel", "DC Comics") do |publish, i|
-            puts "#{i + 1}. #{publish.name}"
+        puts "Welcome to Baggage. Enter a name to continue: "
+        sleep 1
+        input = gets.strip
+        puts ("Welcome #{input}")
+        sleep 1
+        puts ("Enter 1 for Marvel or 2 for DC") 
+        puts "1. Marvel"
+        sleep(1)
+        puts "2. DC"
+        sleep(1)
+        input = gets.strip
+        characters = Hash.new()
+        characters["Iron Man"] = "I'm a genius but I have trouble commiting to 1 person"
+        characters["Scarlett Witch"] = "I nearly wiped out all mutant life on earth"
+        characters["Batman"] = "I don't have any powers and I hide my true identity"
+        characters["Catwoman"] = "I'm obsessed with cats and I have low self-control"
+        if input == "1"
+            puts characters["Iron Man", "Scarlett Witch"]
+        elsif input == "2"
+            puts characters["Batman", "catwoman"]
+        else
+            puts "Go back to main menu"
+            menu
         end
+    end
+    
+        #publisher = Baggage::Publisher.find(input.to_i)
+    def change_character?
+        puts ""
+        puts "Would you like to change your character? Enter Y or N" 
+        sleep 1
+        input = gets.strip.downcase
+        if input == "y"
+            menu 
+            sleep 1
+        elsif input == "n"
+            puts "Let's Begin" 
+            sleep 1
+        else 
+            raiseerror 
+        end
+        #|publish, i|
+        #puts "#{i + 1}. #{publish.name}"
     end
 
     def menu
         loop do
         end
         until input == "exit"
-            return greeting
-            input = gets.strip.downcase
-            puts "Choose your baggage: "
-            choose_baggage
-            end
+            return greeting 
+            sleep 1
         end
-        goodbye
+        puts "Choose your baggage: " 
+        sleep 1
+        input = gets.strip.downcase 
+        choose_baggage 
     end
 
     def choose_baggage
-        characters = Hash[Iron Man => "I'm a genius but I have trouble commiting to 1 person", Scarlett Witch: "I nearly wiped out all mutant life on earth", Batman: "I don't have any powers and I hide my true identity", Catwoman: "I'm obsessed with cats and I have low self-control"]
-        if input == "1"
-            characters.find {|character| characters.include?("Iron Man", "Scarlett Witch")}
-                puts "#{character}".sleep[1]
-            end
+        characters = Hash["Iron Man" => "I'm a genius but I have trouble commiting to 1 person",
+        "Scarlett Witch" => "I nearly wiped out all mutant life on earth",
+        "Batman" => "I don't have any powers and I hide my true identity", 
+        "Catwoman" => "I'm obsessed with cats and I have low self-control"]
+        if @input == "1"
+            puts Hash["Iron Man", "Scarlett Witch"]
+        elsif greeting.input == "2"
+            puts Hash["Batman", "Catwoman"]
         else
-            characters.find {|character| character.include?("Batman", "Catwoman")}
-            puts "#{character}".sleep[1]
+            puts "Go back to main menu"
+            menu
         end
-        puts "Go back to main menu"
-        menu
     end
 
 
-    #def list_publisher
+    #def list_publisher(publisher)
+    #Baggage::Publishers.new.get_publisher_urls.include?("Marvel", "DC Comics")
        #dc_dates = ["Harley Quinn", "Poison Ivy", "Flash", "Joker"]
         #marvel_dates = ["Dark Phoenix", "Storm", "Thanos", "Thor"]
+
         #Baggage::Comics.each.with_index(1) do |publish, i|
            # puts "#{i + 1}. #{comic.name}"
        # end
@@ -74,7 +114,7 @@ class Baggage::CLI
          #   "Superman" => "I live a double life and I always lie to my loved ones"
           #  "Joker" => "My arch-nemesis is Batman"
       #  }
-   # end
+    #end
 
     #def list_marvel_baggage
       #  baggage_1 = {
