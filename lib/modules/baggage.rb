@@ -1,8 +1,9 @@
 #can't be instantiated, can't create objects
+#i want most of these classes to include(binds the methods to the object instance) or extend(binds mothod to class itself)
 
-#module Baggage
-   # def url(key)
-    #    marvel_url = "https://comicvine.gamespot.com/marvel/4010-31/"
-    #    dc_url = "https://comicvine.gamespot.com/dc-comics/4010-10/"
-   # end
-#end
+module Baggage
+    def current_user(name)
+        choose_baggage.input.gets.strip
+        puts "I am #{name}"
+    end
+end

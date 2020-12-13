@@ -2,4 +2,4 @@
 
 require_relative "../config/environment.rb"
 
-#Baggage::CLI.new.run
+Baggage::CLI.new.run

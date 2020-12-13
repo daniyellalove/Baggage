@@ -1,12 +1,10 @@
 require "pry"
 require_relative "../config/environment"
-require 'net/http'
-require 'json'
 
-class Api #Baggage::API
+
+class Baggage::API
 
     def initialize
-        #urls = {marvel: "https://comicvine.gamespot.com/marvel/4010-31/", dc: "https://comicvine.gamespot.com/dc-comics/4010-10/"}
         @url = "https://comicvine.gamespot.com/publishers/"
     end
 
@@ -14,8 +12,9 @@ class Api #Baggage::API
         uri = URI.parse(@url)
         response = Net::HTTP.get(uri)
         data = JSON.parse(response)
-        data["results"].each do |publisher|
+        data["results"].each do |publisher| publisher.include?("Marvel", "DC Comics")
             get_publisher_data(publisher["url"])
+            Publisher.new(publisher)
         end
     end
 
@@ -23,9 +22,6 @@ class Api #Baggage::API
         uri = URI.parse(url)
         response = Net::HTTP.get(uri)
         data = JSON.parse(response)
-        Baggage.new(data)
+        Baggage::Publisher.new(data)
     end
 end
-
-Api.new.get_publisher_urls #Baggage::
-binding.pry

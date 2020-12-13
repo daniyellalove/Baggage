@@ -1,82 +1,59 @@
 # taking care of displaying info - all puts/print statements
 # takes care of user input - gets
 #1st level choose marvel or dc, 2nd level choose comic from marvel and dc
-class CLI #Baggage:: ::API
+class Baggage::CLI
     
-    
-    def call 
-        #CLI::API.new#.api method for getting api
-        puts "Baggage: Heroes and Villians"
-    end
-
     def run
-        call
         greeting
         menu
         choose_baggage
         goodbye
     end
 
-    def greeting #30.27
+    def greeting
         puts "Welcome to Baggage. Choose Marvel or DC:"
-        
-        puts "1. Marvel"
-             "2. DC"
-        #insert website link?
-        #marvel link
-        #dc link
-        #Baggage::API.new.get_character_urls
+        puts ("1. Marvel", "2. DC").sleep[1]
+        #Baggage::API.new.get_publisher_urls.include?("Marvel", "DC Comics")
+        Baggage::Publisher.each.with_index(1).include?("Marvel", "DC Comics") do |publish, i|
+            puts "#{i + 1}. #{publish.name}"
+        end
     end
 
     def menu
         loop do
         end
-        input = nil
-        while input != "exit"
-            puts "Enter 1 for Marvel and 2 for DC"
+        until input == "exit"
+            return greeting
             input = gets.strip.downcase
-            case input
-            when "1" || "2"
-                puts "Choose your baggage: "
-            when "list"
-                greeting
+            puts "Choose your baggage: "
+            choose_baggage
             end
         end
-        choose_baggage
+        goodbye
     end
 
     def choose_baggage
-        #characters.map do |num|
-        case input 
-        when input == 1
-        #1 = "Iron man"
-            puts "I'm a genius but I have trouble commiting to 1 person"
-            "Welcome Iron Man"
-        when input == 2
-        #2 = "Scarlet Witch"
-            puts "I nearly wiped out all mutant life on earth"
-            "Welcome Scarlet Witch"
-        when input == 3
-        #3 = "Batman"
-            puts "I don't have any powers and I hide my true identity"
-            "Welcome Batman"
-        when input == 4
-        #4 = "Catwoman"
-            puts "I'm obsessed with cats and I have low self-control"
-            "Welcome Catwoman"
+        characters = Hash[Iron Man => "I'm a genius but I have trouble commiting to 1 person", Scarlett Witch: "I nearly wiped out all mutant life on earth", Batman: "I don't have any powers and I hide my true identity", Catwoman: "I'm obsessed with cats and I have low self-control"]
+        if input == "1"
+            characters.find {|character| characters.include?("Iron Man", "Scarlett Witch")}
+                puts "#{character}".sleep[1]
+            end
         else
-            puts "Go back to main menu"
-            greeting
+            characters.find {|character| character.include?("Batman", "Catwoman")}
+            puts "#{character}".sleep[1]
         end
+        puts "Go back to main menu"
+        menu
     end
-        
 
-    # def list_dates
-       # dc_dates = ["Harley Quinn", "Poison Ivy", "Flash", "Joker"]
-       # marvel_dates = ["Dark Phoenix", "Storm", "Thanos", "Thor"]
-        #Baggage::Comics.each.with_index(1) do |comic, i|
-        # puts "#{i + 1}. #{comic.name}"
-   # end
+
+    #def list_publisher
+       #dc_dates = ["Harley Quinn", "Poison Ivy", "Flash", "Joker"]
+        #marvel_dates = ["Dark Phoenix", "Storm", "Thanos", "Thor"]
+        #Baggage::Comics.each.with_index(1) do |publish, i|
+           # puts "#{i + 1}. #{comic.name}"
+       # end
+  # end
 
    # def list_dc_baggage
        # baggage_1 = {
