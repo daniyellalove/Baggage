@@ -5,6 +5,7 @@ class Baggage::CLI
     def run
         greeting
         list_baggage_1
+        list_baggage_2
         menu
         goodbye
     end
@@ -15,7 +16,10 @@ class Baggage::CLI
         input = gets.strip
         puts ("Welcome #{input}")
         sleep 1
-        puts ("Enter 1 for Marvel or 2 for DC") 
+        puts ""
+        puts ("Enter 1 for Marvel or 2 for DC")
+        sleep 1 
+        puts ""
         puts "1. Marvel"
         sleep 0.5
         puts "2. DC"
@@ -26,7 +30,9 @@ class Baggage::CLI
             characters["Batman"] = "1. I don't have any powers and I hide my true identity"
             characters["Catwoman"] = "2. I'm obsessed with cats and I have low self-control"
         if input == "1"
+            puts ""
             puts "Choose your baggage: "
+            sleep 1
             puts ""
             puts characters["Iron Man"] 
             sleep(0.5)
@@ -35,12 +41,17 @@ class Baggage::CLI
             input = gets.strip
             puts "#{input}" 
         elsif input == "2"
+            puts "Choose your unfortunate baggage: "
+            sleep 1
             puts characters["Batman"]
             sleep(0.5)
             puts characters["Catwoman"]
             sleep(0.5)
             input = gets.strip
             puts "#{input}"
+            #make method to reteun hero name
+        else
+            exit
         end
     end
 
@@ -67,38 +78,82 @@ class Baggage::CLI
    def list_baggage_1
         puts ""
         puts "Starting baggage 1... Enter a number to get rid of some baggage"
+        sleep 1
         puts ""
-        puts "Harley Quinn says: 1. I cheated my way into college"
-        puts "Joker says 2. I manipulate others for my own good" 
-        puts "Dark Phoenix says: 3. I'm hot headed"
-        puts "Thanos says: 4. I stole a child"  
-        puts "Exit"
+        puts "1. Harley Quinn says: I cheated my way into college"
+        sleep 1
+        puts "2. Joker says: I manipulate others for my own good" 
+        sleep 1
+        puts "3. Dark Phoenix says: I'm hot headed"
+        sleep 1
+        puts "4. Thanos says: I stole a child"  
+        sleep 1
+        puts ""
+        puts "Or type exit"
+        sleep 1
         input = gets.strip
         if input == "1"
             puts "You have too much baggage Harley Quinn"
-            puts "Harley Quinn says: I never liked you anyway"
+            sleep 1
+            puts ""
+            puts "Harley Quinn: I never liked you anyway"
             sleep 1   
         elsif input == "2"
             puts "You have too much baggage Joker"
-            puts "HAahahAha"
+            sleep 1
+            puts ""
+            puts "Joker: HAahahAha"
             sleep 1
         elsif input == "3"
             puts "You have too much baggage Dark Phoenix"
-            puts "Dark Phoenix says: I never wanted you"
+            sleep 1
+            puts ""
+            puts "Dark Phoenix: I never wanted you"
             sleep 1
         elsif input == "4"
             puts "You have too much baggage Thanos"
-            puts "Goodbye loser"
+            sleep 1
+            puts ""
+            puts "Thanos: Goodbye loser"
             sleep 1
         else
             puts "Exiting now.." 
             sleep 1
             exit
         end
+        puts "..Starting Baggage 2"
+        puts ""
     end
       
 
-
+    def list_baggage_2#(number)
+        a = ["1. I killed my ex-boyfriend", "2. I blew up a school full of children", "3. When I'm bored, I kill people", "4. I'm a sociopath and I faked my own death"]
+        #heroes = a.each do |hero|
+            #puts hero 
+        #end
+        joined = a.join(" ")
+        puts joined
+        puts ""
+        puts "Enter a number at random to get rid of some baggage"
+        sleep 1
+        input = gets.strip
+        if input == "1"
+            puts "Goodbye Harley Quinn"
+        elsif input == "2"
+            puts "Goodbye Joker"
+        elsif input == "3"
+            puts "Goodbye Thanos"
+        elsif input == "4"
+            puts "Goodbye Dark Phoenix"
+        else
+            puts "Exit Progrom"
+            sleep 3
+            exit
+        #result= a.delete(number)
+        #puts result
+        end
+        #a.delete(number)
+    end
         
        # baggage_2 = {
         #    "Harley Quinn" => "I killed my ex-boyfriend"
