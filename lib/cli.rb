@@ -24,10 +24,6 @@ class Baggage::CLI
     end
 
     def your_baggage
-        characters = Hash.new
-            characters["Batman"] = "1. I don't have any powers and I hide my true identity"
-            characters["Catwoman"] = "2. I'm obsessed with cats and I have low self-control"
-
         iron_man = Baggage::CLI.new
         iron_man.character = "Iron Man"
         iron_man.baggage = "1. I'm a genius but I have trouble commiting to 1 person"
@@ -35,6 +31,14 @@ class Baggage::CLI
         scarlett_witch = Baggage::CLI.new
         scarlett_witch.character = "Scarlett Witch"
         scarlett_witch.baggage = "2. I nearly wiped out all mutant life on earth"
+
+        batman = Baggage::CLI.new
+        batman.character = "Batman"
+        batman.baggage = "1. I don't have any powers and I hide my true identity"
+
+        catwoman = Baggage::CLI.new
+        catwoman.character = "Catwoman"
+        catwoman.baggage = "2. I'm obsessed with cats and I have low self-control"
 
         puts ""
         puts "Enter 1 for Marvel or 2 for DC"
@@ -64,24 +68,28 @@ class Baggage::CLI
             puts "Choose your unfortunate baggage: "
             sleep 1
             puts ""
-            puts characters["Batman"]
+            puts "#{batman.baggage}"
             sleep 0.5
-            puts characters["Catwoman"]
+            puts "#{catwoman.baggage}"
             sleep 0.5
-            input = gets.strip
-            puts ""
-            #inputs = input.each do |p_hero|
-            #puts "You are someone"
+            @input = gets.strip
+            if @input == "1"
+            puts "You are #{batman.character}"
+            elsif @input == "2"
+                puts "You are #{catwoman.character}"
+            end
         else
             exit
         end
+        puts "Starting Baggage.."
+        sleep 0.5
     end
 
     def menu
         loop do
         end
         puts "Enter exit to exit: "
-        input = gets.strip
+        @input = gets.strip
         puts ""
         puts "Exiting.."
         exit
