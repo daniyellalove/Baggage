@@ -2,8 +2,11 @@
 # takes care of user input - gets
 #1st level choose marvel or dc, 2nd level choose comic from marvel and dc
 class Baggage::CLI
+    attr_accessor :input, :character, :baggage
+
     def run
         greeting
+        your_baggage
         list_baggage_1
         list_baggage_2
         menu
@@ -13,43 +16,62 @@ class Baggage::CLI
     def greeting
         puts "Welcome to Baggage. Enter a name to continue: "
         sleep 1
-        input = gets.strip
-        puts ("Welcome #{input}")
+        @input = gets.strip
+        puts ""
+        puts "Welcome #{@input}. Let's begin Baggage ~"
         sleep 1
         puts ""
-        puts ("Enter 1 for Marvel or 2 for DC")
-        sleep 1 
+    end
+
+    def your_baggage
+        characters = Hash.new
+            characters["Batman"] = "1. I don't have any powers and I hide my true identity"
+            characters["Catwoman"] = "2. I'm obsessed with cats and I have low self-control"
+
+        iron_man = Baggage::CLI.new
+        iron_man.character = "Iron Man"
+        iron_man.baggage = "1. I'm a genius but I have trouble commiting to 1 person"
+
+        scarlett_witch = Baggage::CLI.new
+        scarlett_witch.character = "Scarlett Witch"
+        scarlett_witch.baggage = "2. I nearly wiped out all mutant life on earth"
+
+        puts ""
+        puts "Enter 1 for Marvel or 2 for DC"
         puts ""
         puts "1. Marvel"
         sleep 0.5
         puts "2. DC"
-        input = gets.strip
-        characters = Hash.new
-            characters["Iron Man"] = "1. I'm a genius but I have trouble commiting to 1 person"
-            characters["Scarlett Witch"] = "2. I nearly wiped out all mutant life on earth"
-            characters["Batman"] = "1. I don't have any powers and I hide my true identity"
-            characters["Catwoman"] = "2. I'm obsessed with cats and I have low self-control"
-        if input == "1"
+        @input = gets.strip
+        if @input == "1"
             puts ""
-            puts "Choose your baggage: "
+            puts "#{iron_man.baggage}"
             sleep 1
+            puts "#{scarlett_witch.baggage}"
+            sleep 0.5
             puts ""
-            puts characters["Iron Man"] 
-            sleep(0.5)
-            puts characters["Scarlett Witch"]
-            sleep(0.5)
             input = gets.strip
-            puts "#{input}" 
+            if @input == "1"
+                puts "You are #{iron_man.character}"
+                sleep 0.5
+            elsif @input == "2"
+                puts "You are #{scarlett_witch.character}"
+                sleep 0.5
+            else
+                exit
+            end
         elsif input == "2"
             puts "Choose your unfortunate baggage: "
             sleep 1
+            puts ""
             puts characters["Batman"]
-            sleep(0.5)
+            sleep 0.5
             puts characters["Catwoman"]
-            sleep(0.5)
+            sleep 0.5
             input = gets.strip
-            puts "#{input}"
-            #make method to reteun hero name
+            puts ""
+            #inputs = input.each do |p_hero|
+            #puts "You are someone"
         else
             exit
         end
@@ -58,22 +80,14 @@ class Baggage::CLI
     def menu
         loop do
         end
-        puts "enter exit to exit"
+        puts "Enter exit to exit: "
         input = gets.strip
+        puts ""
         puts "Exiting.."
         exit
     end
 
 
-    #def list_publisher(publisher)
-    #Baggage::Publishers.new.get_publisher_urls.include?("Marvel", "DC Comics")
-       #dc_dates = ["Harley Quinn", "Poison Ivy", "Flash", "Joker"]
-        #marvel_dates = ["Dark Phoenix", "Storm", "Thanos", "Thor"]
-
-        #Baggage::Comics.each.with_index(1) do |publish, i|
-           # puts "#{i + 1}. #{comic.name}"
-       # end
-  # end
 
    def list_baggage_1
         puts ""
@@ -93,13 +107,13 @@ class Baggage::CLI
         sleep 1
         input = gets.strip
         if input == "1"
-            puts "You have too much baggage Harley Quinn"
+            puts "Harley Quinn packs up her baggage"
             sleep 1
             puts ""
             puts "Harley Quinn: I never liked you anyway"
             sleep 1   
         elsif input == "2"
-            puts "You have too much baggage Joker"
+            puts "Joker packs up his baggage"
             sleep 1
             puts ""
             puts "Joker: HAahahAha"
@@ -121,6 +135,7 @@ class Baggage::CLI
             sleep 1
             exit
         end
+        puts ""
         puts "..Starting Baggage 2"
         puts ""
     end
@@ -139,22 +154,39 @@ class Baggage::CLI
         input = gets.strip
         if input == "1"
             puts "Goodbye Harley Quinn"
+            sleep 1
+            exit
         elsif input == "2"
             puts "Goodbye Joker"
+            sleep 1
+            exit
         elsif input == "3"
             puts "Goodbye Thanos"
+            sleep 1
+            exit
         elsif input == "4"
             puts "Goodbye Dark Phoenix"
+            sleep 1
+            exit
         else
-            puts "Exit Progrom"
+            puts "Exiting Progrom"
             sleep 3
             exit
         #result= a.delete(number)
         #puts result
         end
+        puts "Type exit to exit program"
+        if input == "exit"
+            exit
+        end
         #a.delete(number)
     end
         
+    def goodbye
+        puts "See you soon"
+        exit
+    end
+end
        # baggage_2 = {
         #    "Harley Quinn" => "I killed my ex-boyfriend"
          #   "Poison Ivy" => "I seduce people to get my way"
@@ -187,11 +219,18 @@ class Baggage::CLI
        # }
    # end
 
-    def goodbye
-        puts "See you soon"
-        exit
-    end
-end
+
+    #def list_publisher(publisher)
+    #Baggage::Publishers.new.get_publisher_urls.include?("Marvel", "DC Comics")
+       #dc_dates = ["Harley Quinn", "Poison Ivy", "Flash", "Joker"]
+        #marvel_dates = ["Dark Phoenix", "Storm", "Thanos", "Thor"]
+
+        #Baggage::Comics.each.with_index(1) do |publish, i|
+           # puts "#{i + 1}. #{comic.name}"
+       # end
+  # end
+
+
 
 
 #figure out how to use api keys
