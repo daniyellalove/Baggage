@@ -98,54 +98,67 @@ class Baggage::CLI
 
 
    def list_baggage_1
+        hq_baggage1 = Baggage::CLI.new
+        hq_baggage1.name = "Harley Quinn"
+        hq_baggage1.baggage = "I cheated my way into college"
+
+        jk_baggage1 = Baggage::CLI.new
+        jk_baggage1.name = "Joker"
+        jk_baggage1.baggage = "I manipulate others for my own good" 
+
+        dp_baggage1 = Baggage::CLI.new
+        dp_baggage1.name = "Dark Phoenix"
+        dp_baggage1.baggage = "3. Dark Phoenix says: I'm hot headed"
+
+        tn_baggage1 = Baggage::CLI.new
+        tn_baggage1.name = "Thanos"
+        tn_baggage1.baggage = "stole a child"
+
         puts ""
         puts "Starting baggage 1... Enter a number to get rid of some baggage"
         sleep 1
         puts ""
-        puts "1. Harley Quinn says: I cheated my way into college"
+        puts "1. #{hq_baggage1.name} says: #{hq_baggage1.baggage}"
         sleep 1
-        puts "2. Joker says: I manipulate others for my own good" 
+        puts "2. #{jk_baggage.name} says: #{jk_baggage.baggage}"
         sleep 1
-        puts "3. Dark Phoenix says: I'm hot headed"
+        puts "3. #{dp_baggage.name} says: #{dp_baggage.baggage}"
         sleep 1
-        puts "4. Thanos says: I stole a child"  
+        puts "4. #{tn_baggage.name} says: #{tn_baggage.baggage}"  
         sleep 1
         puts ""
         puts "Or type exit"
         sleep 1
         input = gets.strip
         if input == "1"
-            puts "Harley Quinn packs up her baggage"
+            puts "#{hq_baggage.name} packs up her baggage.."
             sleep 1
             puts ""
-            puts "Harley Quinn: I never liked you anyway"
+            puts "#{hq_baggage.name}: I never liked you anyway"
             sleep 1   
         elsif input == "2"
-            puts "Joker packs up his baggage"
+            puts "#{jk_baggage.name} packs up his baggage.."
             sleep 1
             puts ""
-            puts "Joker: HAahahAha"
+            puts "#{jk_baggage.name}: HAahahAha"
             sleep 1
         elsif input == "3"
-            puts "You have too much baggage Dark Phoenix"
+            puts "You have too much baggage #{dp_baggage.name}"
             sleep 1
             puts ""
-            puts "Dark Phoenix: I never wanted you"
+            puts "#{dp_baggage.name}: I never wanted you"
             sleep 1
         elsif input == "4"
-            puts "You have too much baggage Thanos"
+            puts "You have too much baggage #{tn_baggage.name}"
             sleep 1
             puts ""
-            puts "Thanos: Goodbye loser"
+            puts "#{tn_baggage.name}: Goodbye loser"
             sleep 1
         else
             puts "Exiting now.." 
             sleep 1
             exit
         end
-        puts ""
-        puts "..Starting Baggage 2"
-        puts ""
     end
       
 
@@ -154,6 +167,9 @@ class Baggage::CLI
         #heroes = a.each do |hero|
             #puts hero 
         #end
+        puts ""
+        puts "..Starting Baggage 2"
+        puts ""
         joined = a.join(" ")
         puts joined
         puts ""
