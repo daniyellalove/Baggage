@@ -1,3 +1,5 @@
 # Baggage - Superheros and Villians
-This is a fun CLI application inspired by the dating show Baggage.
-run bin/baggage to start
+This is a CLI app adaptation of the dating game show Baggage using Comicvine API. Project is in development.
+
+installation
+
