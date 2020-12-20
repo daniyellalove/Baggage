@@ -1,8 +1,22 @@
+require_relative "../config/environment"
 # taking care of displaying info - all puts/print statements
 # takes care of user input - gets
 #1st level choose marvel or dc, 2nd level choose comic from marvel and dc
 class Baggage::CLI
-    attr_accessor :input, :character, :baggage
+    attr_accessor :input, :name, :baggage, :publisher
+    @@all = []
+    
+    def initialize
+        @@all << self
+    end 
+    
+    def self.all
+        @@all
+    end
+
+    def self.reset_all
+        @@all.clear
+    end
 
     def run
         greeting
@@ -24,22 +38,26 @@ class Baggage::CLI
     end
 
     def your_baggage
+        Baggage::Publisher.all.each_with_index do |publisher_hash, i| #listing/putsing each publisher with a number
+            puts "#{i + 1}. #{publisher_hash.name}"
+        end
+        
         iron_man = Baggage::CLI.new
-        iron_man.character = "Iron Man"
+        iron_man.name = "Iron Man"
         iron_man.baggage = "1. I'm a genius but I have trouble commiting to 1 person"
 
         scarlett_witch = Baggage::CLI.new
-        scarlett_witch.character = "Scarlett Witch"
+        scarlett_witch.name = "Scarlett Witch"
         scarlett_witch.baggage = "2. I nearly wiped out all mutant life on earth"
 
         batman = Baggage::CLI.new
-        batman.character = "Batman"
+        batman.name = "Batman"
         batman.baggage = "1. I don't have any powers and I hide my true identity"
 
         catwoman = Baggage::CLI.new
-        catwoman.character = "Catwoman"
+        catwoman.name = "Catwoman"
         catwoman.baggage = "2. I'm obsessed with cats and I have low self-control"
-
+       
         puts ""
         puts "Enter 1 for Marvel or 2 for DC"
         puts ""
@@ -48,6 +66,8 @@ class Baggage::CLI
         puts "2. DC"
         @input = gets.strip
         if @input == "1"
+            puts "Choose your unfortunate baggage: "
+            sleep 1
             puts ""
             puts "#{iron_man.baggage}"
             sleep 1
@@ -56,10 +76,10 @@ class Baggage::CLI
             puts ""
             input = gets.strip
             if @input == "1"
-                puts "You are #{iron_man.character}"
+                puts "You are #{iron_man.name}"
                 sleep 0.5
             elsif @input == "2"
-                puts "You are #{scarlett_witch.character}"
+                puts "You are #{scarlett_witch.name}"
                 sleep 0.5
             else
                 exit
@@ -74,9 +94,9 @@ class Baggage::CLI
             sleep 0.5
             @input = gets.strip
             if @input == "1"
-            puts "You are #{batman.character}"
+            puts "You are #{batman.name}"
             elsif @input == "2"
-                puts "You are #{catwoman.character}"
+                puts "You are #{catwoman.name}"
             end
         else
             exit
@@ -120,39 +140,39 @@ class Baggage::CLI
         puts ""
         puts "1. #{hq_baggage1.name} says: #{hq_baggage1.baggage}"
         sleep 1
-        puts "2. #{jk_baggage.name} says: #{jk_baggage.baggage}"
+        puts "2. #{jk_baggage1.name} says: #{jk_baggage1.baggage}"
         sleep 1
-        puts "3. #{dp_baggage.name} says: #{dp_baggage.baggage}"
+        puts "3. #{dp_baggage1.name} says: #{dp_baggage1.baggage}"
         sleep 1
-        puts "4. #{tn_baggage.name} says: #{tn_baggage.baggage}"  
+        puts "4. #{tn_baggage1.name} says: #{tn_baggage1.baggage}"  
         sleep 1
         puts ""
         puts "Or type exit"
         sleep 1
         input = gets.strip
         if input == "1"
-            puts "#{hq_baggage.name} packs up her baggage.."
+            puts "#{hq_baggage1.name} packs up her baggage.."
             sleep 1
             puts ""
-            puts "#{hq_baggage.name}: I never liked you anyway"
+            puts "#{hq_baggage1.name}: I never liked you anyway"
             sleep 1   
         elsif input == "2"
-            puts "#{jk_baggage.name} packs up his baggage.."
+            puts "#{jk_baggage1.name} packs up his baggage.."
             sleep 1
             puts ""
-            puts "#{jk_baggage.name}: HAahahAha"
+            puts "#{jk_baggage1.name}: HAahahAha"
             sleep 1
         elsif input == "3"
-            puts "You have too much baggage #{dp_baggage.name}"
+            puts "You have too much baggage #{dp_baggage1.name}"
             sleep 1
             puts ""
-            puts "#{dp_baggage.name}: I never wanted you"
+            puts "#{dp_baggage1.name}: I never wanted you"
             sleep 1
         elsif input == "4"
-            puts "You have too much baggage #{tn_baggage.name}"
+            puts "You have too much baggage #{tn_baggage1.name}"
             sleep 1
             puts ""
-            puts "#{tn_baggage.name}: Goodbye loser"
+            puts "#{tn_baggage1.name}: Goodbye loser"
             sleep 1
         else
             puts "Exiting now.." 
