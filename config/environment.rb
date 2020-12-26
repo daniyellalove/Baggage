@@ -4,8 +4,6 @@ require 'open-uri'
 require 'json'
 
 
-#require('.env')
-
 require_relative "../lib/modules/baggage"
 require_relative "../lib/cli"
 #require_relative "../lib/comics"

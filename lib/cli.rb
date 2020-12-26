@@ -10,13 +10,13 @@ class Baggage::CLI
         @@all << self
     end 
     
-    def self.all
-        @@all
-    end
+    #def self.all
+       # @@all
+    #end
 
-    def self.reset_all
-        @@all.clear
-    end
+    #def self.reset_all
+      #  @@all.clear
+    #end
 
     def run
         greeting
@@ -231,6 +231,8 @@ class Baggage::CLI
         exit
     end
 end
+
+    #def list_baggage_3
        # baggage_2 = {
         #    "Harley Quinn" => "I killed my ex-boyfriend"
          #   "Poison Ivy" => "I seduce people to get my way"
